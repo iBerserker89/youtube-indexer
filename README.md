@@ -10,10 +10,8 @@ Back-end em **PHP** chama a **YouTube Data API v3**; front-end em **JS puro**.
 ---
 
 ## Configuração da API Key
-### Opção A) Variável de ambiente (recomendado)
-Defina `YT_API_KEY` no servidor (Render/Koyeb/etc).
 
-### Opção B) Arquivo `config.php`
+### Arquivo `config.php`
 Copie `config.example.php` para `config.php` e coloque sua chave:
 ```php
 define('YT_API_KEY', 'SUA_CHAVE_AQUI');
