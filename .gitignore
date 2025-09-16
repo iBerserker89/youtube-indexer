@@ -1,0 +1,29 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# PHP / tooling
+vendor/
+composer.lock
+.phpunit.result.cache
+coverage/
+.cache/
+
+# Env / secrets
+.env
+.env.*
+config.php
+
+# Builds / bundles
+*.zip
+dist/
+build/
+
+# Logs
+*.log
+logs/
+storage/logs/
+storage/cache/*
+!storage/cache/.gitkeep

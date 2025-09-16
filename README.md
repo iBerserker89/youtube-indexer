@@ -1,0 +1,63 @@
+# YouTube Channel Indexer (PHP + JS)
+
+MVP simples: digite **tema**, **idioma** (ISO 639‑1) e **país** (ISO 3166‑1), o app lista **canais relacionados**.  
+Back-end em **PHP** chama a **YouTube Data API v3**; front-end em **JS puro**.
+
+## Rotas
+- `GET /channels?topic=<str>&lang=<pt|en|...>&country=<BR|US|...>&pageToken=<token>` → JSON com canais
+- `GET /` → Página com formulário e cards
+
+---
+
+## Configuração da API Key
+### Opção A) Variável de ambiente (recomendado)
+Defina `YT_API_KEY` no servidor (Render/Koyeb/etc).
+
+### Opção B) Arquivo `config.php`
+Copie `config.example.php` para `config.php` e coloque sua chave:
+```php
+define('YT_API_KEY', 'SUA_CHAVE_AQUI');
+```
+
+---
+
+## Rodando localmente
+Requer **PHP 8+** com cURL.
+```bash
+export YT_API_KEY=YOUR_KEY
+php -S 127.0.0.1:8080 -t public
+# abra http://127.0.0.1:8080
+```
+
+---
+
+## Como funciona (resumo)
+1. `search` → `type=video` (+ `regionCode` + `relevanceLanguage`) para refletir melhor a regionalidade do conteúdo.  
+2. Dedupe de `channelId`.  
+3. `channels.list` (`snippet,statistics,topicDetails`) para enriquecer e ordenar por inscritos.  
+4. Resposta JSON para o front-end.
+
+---
+
+## Limites/Quota
+- `search.list` custa **100 unidades** por chamada; `channels.list` custa **1**.  
+
+---
+
+## Estrutura
+```
+.
+├─ api/
+│  └─ channels.php         # Proxy para YouTube API
+├─ public/
+│  └─ index.php            # UI (form + cards) com JS puro
+├─ .htaccess               # Reescreve /channels → api/channels.php
+├─ config.example.php
+├─ render.yaml
+└─ README.md
+```
+
+---
+
+## Licença
+MIT.

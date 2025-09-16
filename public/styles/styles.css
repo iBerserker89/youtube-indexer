@@ -1,0 +1,207 @@
+/* ===========================
+   Variáveis de tema
+   - Cores reutilizáveis para manter consistência visual
+   =========================== */
+:root {
+  --fg: #0f172a;     /* Cor principal do texto */
+  --muted: #475569;  /* Texto secundário/dicas */
+  --bg: #f8fafc;     /* Fundo claro */
+  --card: #ffffff;   /* Fundo dos cards/containers */
+  --accent: #2563eb; /* Acento (botões, focos) */
+}
+
+/* ===========================
+   Reset/normalização básica
+   - Box model consistente
+   =========================== */
+* { box-sizing: border-box; }
+
+/* ===========================
+   Base da página
+   - Tipografia padrão e fundo
+   - Evita overflow horizontal no mobile
+   =========================== */
+html, body {
+  margin: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  color: var(--fg);
+  background: linear-gradient(180deg, #f0f4ff, #f8fafc 40%);
+}
+
+/* ===========================
+   Tipografia
+   - Título responsivo com clamp()
+   =========================== */
+h1 {
+  margin: 0 0 8px;
+  font-size: clamp(1.6rem, 3.5vw + 0.5rem, 2.4rem);
+  line-height: 1.2;
+}
+
+/* ===========================
+   Layout básico
+   - Header centralizado
+   - Container com largura máxima e padding
+   =========================== */
+header { padding: 24px; text-align: center; }
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* ===========================
+   Cartão padrão
+   - Usado para agrupar form e resultados
+   =========================== */
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, .06);
+  padding: 16px;
+}
+
+/* ===========================
+   Formulário
+   - Grade com 4 colunas (tema, idioma, país, botão)
+   - gap para espaçamento entre campos
+   =========================== */
+form .row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: 12px;
+}
+
+/* Campos de texto do formulário
+   - Bordas arredondadas e foco acessível
+   - min-width:0 evita overflow dentro de grid */
+input[type="text"] {
+  padding: 12px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  outline: none;
+  min-width: 0; /* evita overflow em grids */
+}
+
+input[type="text"]:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+}
+
+/* Botões do formulário
+   - Visual de ação primária
+   - Estado desabilitado com cursor/opacity */
+button {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:disabled { opacity: .6; cursor: not-allowed; }
+
+/* Texto auxiliar (dicas, instruções) */
+.hint { font-size: 12px; color: var(--muted); margin-top: 6px; }
+.hint code { word-break: break-word; white-space: pre-wrap; }
+
+/* ===========================
+   Grade de resultados (cards)
+   - Grid fluido com colunas auto-fill
+   - Cada card ocupa min 260px
+   =========================== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* Card de canal
+   - Duas colunas (thumb + conteúdo)
+   - Borda leve e cantos arredondados */
+.ch-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px;
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+/* Miniatura do canal
+   - Tamanho fixo, recorte proporcional */
+.thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #f1f5f9;
+}
+
+/* Título do card (reset de margin, tamanho) */
+.title { margin: 0; font-size: 16px; line-height: 1.25; }
+
+/* Metadados do canal (inscritos, vídeos, país) */
+.meta { font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+/* Lista de tópicos (chips) no card */
+.topics {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Chip de tópico (badges) */
+.chip {
+  font-size: 11px;
+  background: #eef2ff;
+  color: #3730a3;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+/* Mensagem de erro/alerta (estilo “callout”) */
+.err {
+  color: #b91c1c;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  padding: 8px 10px;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+/* Rodapé e loader */
+footer { text-align: center; color: var(--muted); font-size: 12px; padding: 24px 0; }
+.loader { margin-top: 16px; font-size: 14px; color: var(--muted); }
+
+/* ===================================
+   Responsividade
+   - Ajustes de colunas para tablets e mobile
+   =================================== */
+
+/* Tablets: reduz a proporção das colunas do form
+   e permite cards mais estreitos (min 220px) */
+@media (max-width: 860px) {
+  form .row { grid-template-columns: 1.5fr 1fr 1fr auto; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+}
+
+/* Mobile: empilha o formulário em 1 coluna
+   e usa 1 coluna para os cards */
+@media (max-width: 640px) {
+  .container { padding: 12px; }
+  form .row { grid-template-columns: 1fr; gap: 10px; }
+  button { width: 100%; }
+  .grid { grid-template-columns: 1fr; }
+  .ch-card { padding: 12px; grid-template-columns: 48px 1fr; }
+  .thumb { width: 48px; height: 48px; }
+}

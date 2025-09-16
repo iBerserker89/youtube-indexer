@@ -1,0 +1,18 @@
+# public/.htaccess
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Se o app estiver em subpasta (ex.: /app), descomente e ajuste:
+  # RewriteBase /app/
+
+  # Não reescrever arquivos/pastas reais
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Mapear /channels -> /channels.php (mantém query string)
+  RewriteRule ^channels/?$ channels.php [QSA,L]
+</IfModule>
+
+# Evita conflitos de content negotiation do Apache
+Options -MultiViews

@@ -1,0 +1,12 @@
+services:
+- type: web
+  name: youtube-indexer-php
+  runtime: docker          # <— era "env"
+  plan: free
+  autoDeploy: true
+  startCommand: php -S 0.0.0.0:$PORT -t public router.php
+  healthCheckPath: /
+  envVars:
+    # Não commit a sua key. Deixe sem sync para setar no painel do Render.
+    - key: YT_API_KEY
+      sync: false
