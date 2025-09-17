@@ -1,0 +1,17 @@
+.git
+.gitignore
+vendor/
+node_modules/
+storage/cache/*
+!storage/cache/.gitkeep
+*.log
+.env
+.env.*
+coverage/
+.phpunit.result.cache
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+dist/
+build/
