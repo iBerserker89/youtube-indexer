@@ -1,23 +1,15 @@
 # ============================================
 # root/.htaccess
 # ============================================
-# ATENÇÃO: este arquivo SÓ tem efeito se o DocumentRoot do Apache
-# for a **raiz do projeto**. Se o seu DocumentRoot é a pasta `public/`
-# (recomendado), então ESTE arquivo é IGNORADO e você deve usar
-# `public/.htaccess` em vez deste.
-#
-# Objetivo aqui: expor /channels como endpoint, apontando para
-# api/channels.php (que está FORA do docroot quando o docroot é a raiz).
+# Expor /channels como endpoint, apontando para
+# api/channels.php.
 # ============================================
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # Se o site estiver publicado em uma subpasta (ex.: /meuapp),
-  # descomente e ajuste a RewriteBase:
   # RewriteBase /meuapp/
 
-  # Não reescrever arquivos/pastas reais
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]

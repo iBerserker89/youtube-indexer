@@ -2,10 +2,6 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # Se o app estiver em subpasta (ex.: /app), descomente e ajuste:
-  # RewriteBase /app/
-
-  # Não reescrever arquivos/pastas reais
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]

@@ -84,9 +84,6 @@ function renderChannels(channels) {
  * - Exibe loader, trata erros de rede/HTTP, e renderiza os resultados.
  * - Controla paginação via nextPageToken e botão "Carregar mais".
  *
- * IMPORTANTE (Opção B):
- * - Backend deve estar rodando com router.php ou Apache com rewrite para /channels.
- *
  * @param {boolean} [loadMore=false] Se true, mantém resultados e carrega a próxima página.
  * @returns {Promise<void>}
  * @throws {Error} Propaga erro quando a resposta HTTP não for OK.
@@ -106,7 +103,6 @@ async function runSearch(loadMore=false) {
   lastQuery = qs;
 
   try {
-    // Opção B: usar rota "bonita" /channels (sem .php)
     const res = await fetch(`/channels?${qs}`);
     if (!res.ok) {
       const text = await res.text();

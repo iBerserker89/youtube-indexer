@@ -6,7 +6,7 @@ use App\CacheFs;
 
 header('Content-Type: application/json; charset=utf-8');
 
-// Autoload “manual” dos utilitários
+// Autoload dos utilitários
 require_once dirname(__DIR__) . '/lib/Config.php';
 require_once dirname(__DIR__) . '/lib/CacheFs.php';
 
@@ -100,7 +100,7 @@ function yt_build_url(string $endpoint, array $params, string $apiKey): string {
     return $base . '?' . http_build_query($params, '', '&', PHP_QUERY_RFC3986);
 }
 
-// ----- 1) Buscar vídeos (region-aware) e deduplicar canais -----
+// ----- Buscar vídeos (region-aware) e deduplicar canais -----
 $searchParams = [
     'part' => 'snippet',
     'type' => 'video',
@@ -153,7 +153,7 @@ if (count($channelIds) === 0) {
     exit;
 }
 
-// ----- 2) Enriquecer canais -----
+// ----- Enriquecer canais -----
 $channelsParams = [
     'part' => 'snippet,statistics,topicDetails',
     'id' => implode(',', array_slice($channelIds, 0, 50))

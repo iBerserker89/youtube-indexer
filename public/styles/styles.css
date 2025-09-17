@@ -1,6 +1,5 @@
 /* ===========================
    Variáveis de tema
-   - Cores reutilizáveis para manter consistência visual
    =========================== */
 :root {
   --fg: #0f172a;     /* Cor principal do texto */
@@ -12,7 +11,6 @@
 
 /* ===========================
    Reset/normalização básica
-   - Box model consistente
    =========================== */
 * { box-sizing: border-box; }
 
@@ -32,7 +30,6 @@ html, body {
 
 /* ===========================
    Tipografia
-   - Título responsivo com clamp()
    =========================== */
 h1 {
   margin: 0 0 8px;
@@ -42,8 +39,6 @@ h1 {
 
 /* ===========================
    Layout básico
-   - Header centralizado
-   - Container com largura máxima e padding
    =========================== */
 header { padding: 24px; text-align: center; }
 
@@ -75,15 +70,13 @@ form .row {
   gap: 12px;
 }
 
-/* Campos de texto do formulário
-   - Bordas arredondadas e foco acessível
-   - min-width:0 evita overflow dentro de grid */
+/* Campos de texto do formulário */
 input[type="text"] {
   padding: 12px 14px;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
   outline: none;
-  min-width: 0; /* evita overflow em grids */
+  min-width: 0;
 }
 
 input[type="text"]:focus {
@@ -91,9 +84,7 @@ input[type="text"]:focus {
   box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
 }
 
-/* Botões do formulário
-   - Visual de ação primária
-   - Estado desabilitado com cursor/opacity */
+/* Botões do formulário */
 button {
   padding: 12px 16px;
   border: none;
@@ -112,8 +103,6 @@ button:disabled { opacity: .6; cursor: not-allowed; }
 
 /* ===========================
    Grade de resultados (cards)
-   - Grid fluido com colunas auto-fill
-   - Cada card ocupa min 260px
    =========================== */
 .grid {
   display: grid;
@@ -123,8 +112,7 @@ button:disabled { opacity: .6; cursor: not-allowed; }
 }
 
 /* Card de canal
-   - Duas colunas (thumb + conteúdo)
-   - Borda leve e cantos arredondados */
+   - Duas colunas (thumb + conteúdo) */
 .ch-card {
   background: #fff;
   border: 1px solid #e5e7eb;
@@ -136,8 +124,7 @@ button:disabled { opacity: .6; cursor: not-allowed; }
   align-items: start;
 }
 
-/* Miniatura do canal
-   - Tamanho fixo, recorte proporcional */
+/* Miniatura do canal */
 .thumb {
   width: 64px;
   height: 64px;
@@ -169,7 +156,7 @@ button:disabled { opacity: .6; cursor: not-allowed; }
   border-radius: 999px;
 }
 
-/* Mensagem de erro/alerta (estilo “callout”) */
+/* Mensagem de erro/alerta */
 .err {
   color: #b91c1c;
   background: #fee2e2;
