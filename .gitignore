@@ -6,7 +6,6 @@ Thumbs.db
 
 # PHP / tooling
 vendor/
-composer.lock
 .phpunit.result.cache
 coverage/
 .cache/

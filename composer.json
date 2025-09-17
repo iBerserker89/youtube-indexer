@@ -1,0 +1,33 @@
+{
+  "name": "iberserker89/youtube-indexer",
+  "description": "YouTube Channel Indexer em PHP + JS: lista canais por tema, idioma (ISO 639-1) e país (ISO 3166-1) usando a YouTube Data API v3.",
+  "type": "project",
+  "license": "MIT",
+  "keywords": ["youtube", "channels", "indexer", "php", "api", "portfolio"],
+  "homepage": "https://github.com/iBerserker89/youtube-indexer",
+  "authors": [
+    { "name": "Luciano Farias Barros" }
+  ],
+  "require": {
+    "php": "^8.2",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^1.11",
+    "pestphp/pest": "^2.0"
+  },
+  "autoload": {
+    "psr-4": { "App\\": "lib/" }
+  },
+  "scripts": {
+    "stan": "phpstan analyse lib --level=max",
+    "test": "vendor/bin/pest"
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  }
+}
